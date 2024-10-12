@@ -60,8 +60,8 @@ def model_builder(builder_args) -> nn.Module:
         print(f"output.logits: {output.logits}")
         return output
 
-    model.orig_forward = model.forward
-    model.forward = MethodType(forward, model)
+    # model.orig_forward = model.forward
+    # model.forward = MethodType(forward, model)
 
     model = ModelWrapper(TransformerArgs(), model)
 
