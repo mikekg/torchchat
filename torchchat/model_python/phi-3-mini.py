@@ -17,7 +17,7 @@ class ModelWrapper(nn.Module):
         with torch.no_grad():
             # print(f"args: {args} kwargs: {kwargs}")
             attention_mask=torch.ones(dtype=torch.int64, size=(1,input_pos[-1]+1) ,device=x.device)
-            outputs = self.model.forward(input_ids=x, position_ids=input_pos.unsqueeze(0), past_key_values=DynamicCache(), use_cache=True, attention_mask=attention_mask)
+            outputs = self.model.forward(input_ids=x, position_ids=input_pos.unsqueeze(0), past_key_values=DynamicCache(), use_cache=True, attention_mask=attention_mask, return_dict=True)
             #print(f"outputs.shape: {outputs.logits.shape}")
             return outputs.logits
 
